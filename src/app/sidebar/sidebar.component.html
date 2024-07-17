@@ -1,0 +1,10 @@
+<div class="sidebar w-64">
+    <ul>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/login">Login</a></li>
+        <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register">Register</a></li>
+        <li *ngIf="authService.isLoggedIn()"><a routerLink="/task-create">Task Create</a></li>
+        <li *ngIf="authService.isLoggedIn()"><a routerLink="/task-board">Task Board</a></li>
+        <li *ngIf=" authService.isLoggedIn()"><a (click)="logout()">Logout</a></li>
+    </ul>
+</div>

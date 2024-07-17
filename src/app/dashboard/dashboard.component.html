@@ -1,0 +1,39 @@
+<div class="p-4">
+    <h1 class="text-xl font-bold mb-4">Dashboard</h1>
+    <h3 class="text-xl font-bold mb-4">Status Wise</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div class="bg-blue-200 p-4 rounded shadow">
+            <h3 class="text-lg">Total Tasks</h3>
+            <p class="text-2xl">{{ stats.totalTasks }}</p>
+        </div>
+        <div class="bg-yellow-200 p-4 rounded shadow">
+            <h3 class="text-lg">To Do</h3>
+            <p class="text-2xl">{{ stats.todo }}</p>
+        </div>
+        <div class="bg-green-200 p-4 rounded shadow">
+            <h3 class="text-lg">Ongoing</h3>
+            <p class="text-2xl">{{ stats.ongoing }}</p>
+        </div>
+        <div class="bg-red-200 p-4 rounded shadow">
+            <h3 class="text-lg">Done</h3>
+            <p class="text-2xl">{{ stats.done }}</p>
+        </div>
+    </div>
+    <h3 class="text-xl font-bold m-4">Category Wise</h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div class="bg-blue-200 p-4 rounded shadow">
+            <h3 class="text-lg">Backend</h3>
+            <p class="text-2xl">{{ stats.backend }}</p>
+        </div>
+        <div class="bg-yellow-200 p-4 rounded shadow">
+            <h3 class="text-lg">Frontend</h3>
+            <p class="text-2xl">{{ stats.frontend }}</p>
+        </div>
+        <div class="bg-green-200 p-4 rounded shadow">
+            <h3 class="text-lg">UI</h3>
+            <p class="text-2xl">{{ stats.ui }}</p>
+        </div>
+
+    </div>
+</div>

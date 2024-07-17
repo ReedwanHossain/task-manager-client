@@ -1,0 +1,12 @@
+.sidebar {
+  @apply h-full bg-gray-800 text-white;
+}
+.sidebar ul {
+  @apply list-none p-0;
+}
+.sidebar ul li {
+  @apply p-4 border-b border-gray-700;
+}
+.sidebar ul li a {
+  @apply text-white no-underline;
+}

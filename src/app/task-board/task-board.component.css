@@ -1,0 +1,8 @@
+.readonly-editor .angular-editor-textarea {
+  pointer-events: none;
+  background-color: #f9f9f9;
+}
+
+.readonly-editor .angular-editor-toolbar {
+  display: none;
+}

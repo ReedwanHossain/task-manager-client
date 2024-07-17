@@ -1,0 +1,34 @@
+<div class="task-create-container">
+    <h2>Create Task</h2>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>Title</label>
+            <input formControlName="title" type="text" />
+        </div>
+        <div>
+            <label>Description</label>
+            <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+        </div>
+        <div>
+            <label>Category</label>
+            <select formControlName="category">
+                <option value="backend">Backend</option>
+                <option value="frontend">Frontend</option>
+                <option value="ui">UI</option>
+            </select>
+        </div>
+        <div>
+            <label>Due Date</label>
+            <input formControlName="dueDate" type="date" />
+        </div>
+        <div>
+            <label>Status</label>
+            <select formControlName="status">
+                <option value="todo">Todo</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="done">Done</option>
+            </select>
+        </div>
+        <button type="submit">Create Task</button>
+    </form>
+</div>

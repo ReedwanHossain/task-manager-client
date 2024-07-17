@@ -1,0 +1,42 @@
+<div class="p-4">
+    <h2 class="text-xl font-bold mb-4">Task Board</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div *ngFor="let board of taskBoards" class="bg-gray-100 p-4 rounded shadow">
+            <h3 class="text-lg font-bold mb-2">{{ board.status | titlecase }}</h3>
+            <div *ngIf="board.tasks.length > 0; else noTasks">
+                <div *ngFor="let task of board.tasks" class="bg-white p-2 mb-2 rounded shadow">
+                    <h4 class="text-md font-semibold">{{ task.title }}</h4>
+                    <angular-editor [(ngModel)]="task.description" [config]="editorConfig"
+                        class="readonly-editor"></angular-editor>
+                    <div class="mt-2">
+                        <label class="block text-sm font-medium text-gray-700">Status</label>
+                        <select [(ngModel)]="task.status" (change)="updateTask(task)"
+                            class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+                            <option value="todo">To Do</option>
+                            <option value="ongoing">Ongoing</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </div>
+
+                    <div class="mt-2">
+                        <label class="block text-sm font-medium text-gray-700">Category</label>
+                        <select [(ngModel)]="task.category" (change)="updateTask(task)"
+                            class="block w-full mt-1 p-2 border border-gray-300 rounded-md">
+                            <option value="backend">Backend</option>
+                            <option value="frontend">Frontend</option>
+                            <option value="ui">UI</option>
+                        </select>
+                    </div>
+                    <div class="mt-2">
+                        <label class="block text-sm font-medium text-gray-700">Due Date</label>
+                        <input type="date" [(ngModel)]="task.dueDate" (change)="updateTask(task)"
+                            class="block w-full mt-1 p-2 border border-gray-300 rounded-md" />
+                    </div>
+                </div>
+            </div>
+            <ng-template #noTasks>
+                <p class="text-sm text-gray-500">No tasks</p>
+            </ng-template>
+        </div>
+    </div>
+</div>
