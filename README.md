@@ -2,26 +2,76 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Text Manager Application
 
-## Code scaffolding
+This repository contains the Frontend app for a Task Manager Application. Follow the instructions below to set up and run the application locally using Docker.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
 
-## Build
+- Docker version 24.0.7
+- Docker Compose version 2.27.1
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Backend Setup (task-manager-api)
 
-## Running unit tests
+_You can skip 1-3 if you already have the backend app running_
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the (this) backend repository:
 
-## Running end-to-end tests
+```bash
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  git clone https://github.com/ReedwanHossain/task-manager-api.git
+  cd task-manager-api
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. Create .env based on .env.example:
+
+```bash
+  touch .env
+  cp .env.example .env
+
+
+```
+
+3. Run Docker Compose to build and start the backend services:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+4. Open another terminal tab or window. Clone the frontend repository::
+
+   ```bash
+
+   git clone https://github.com/ReedwanHossain/task-manager-client.git
+   cd task-manager-client
+
+   ```
+
+5. Run Docker Compose to build and start the frontend app:
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+6. Access the application
+
+   ```bash
+   http://localhost:4200
+   ```
+
+7. Access the API Docs
+
+   ```bash
+   http://localhost:3000/docs
+   ```
+
+## License
+
+Nest is [MIT licensed](LICENSE).
+
+```
+
+```
