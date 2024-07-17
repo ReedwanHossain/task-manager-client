@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../common/task.service';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { Task } from '../task-board/task.interface';
 import { CommonModule } from '@angular/common';
+import {
+  AngularEditorConfig,
+  AngularEditorModule,
+} from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
-import { AngularEditorModule } from '@kolkov/angular-editor';
-import { Task } from './task.interface';
-
-interface TaskBoard {
-  status: string;
-  tasks: Task[];
-}
 
 @Component({
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrl: './task-list.component.css',
   standalone: true,
-  selector: 'app-task-board',
-  templateUrl: './task-board.component.html',
-  styleUrls: ['./task-board.component.css'],
   imports: [CommonModule, FormsModule, AngularEditorModule],
 })
-export class TaskBoardComponent implements OnInit {
+export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
-  taskBoards: TaskBoard[] = [];
-
+  page: number = 1;
+  limit: number = 5;
+  filter: string = '';
   editorConfig: AngularEditorConfig = {
     editable: false,
     spellcheck: true,
@@ -68,23 +66,31 @@ export class TaskBoardComponent implements OnInit {
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => {
-      this.tasks = tasks;
-      this.categorizeTasks();
-    });
+    this.getTasks();
   }
 
-  categorizeTasks(): void {
-    const statusSet = new Set(this.tasks.map((task) => task.status));
-    this.taskBoards = Array.from(statusSet).map((status) => ({
-      status,
-      tasks: this.tasks.filter((task) => task.status === status),
-    }));
+  getTasks(): void {
+    this.taskService
+      .getTasksPagination(this.page, this.limit, this.filter)
+      .subscribe((tasks) => {
+        this.tasks = tasks;
+      });
   }
 
-  updateTask(task: Task): void {
-    this.taskService.updateTask(task).subscribe(() => {
-      this.categorizeTasks();
-    });
+  nextPage(): void {
+    this.page++;
+    this.getTasks();
+  }
+
+  prevPage(): void {
+    if (this.page > 1) {
+      this.page--;
+      this.getTasks();
+    }
+  }
+
+  applyFilter(filter: string): void {
+    this.filter = filter;
+    this.getTasks();
   }
 }

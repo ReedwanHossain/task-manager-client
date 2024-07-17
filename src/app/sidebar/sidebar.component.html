@@ -5,6 +5,7 @@
         <li *ngIf="!authService.isLoggedIn()"><a routerLink="/register">Register</a></li>
         <li *ngIf="authService.isLoggedIn()"><a routerLink="/task-create">Task Create</a></li>
         <li *ngIf="authService.isLoggedIn()"><a routerLink="/task-board">Task Board</a></li>
+        <li *ngIf="authService.isLoggedIn()"><a routerLink="/task-list">Task List</a></li>
         <li *ngIf=" authService.isLoggedIn()"><a (click)="logout()">Logout</a></li>
     </ul>
 </div>
